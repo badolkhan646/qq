@@ -1,0 +1,26 @@
+{
+  "author": "BADOL",
+  "autoRestart": true,
+  "accpetPending": false,
+  "developermode": false,
+  "language": "en",
+  "notification": false,
+  "approval": false,
+  "saveState": false,
+  "BOTNAME": "𝐁𝟒𝐃𝟗𝐋-𝐁𝟗𝐓___//𝟎𝟎𝟕",
+  "PREFIX": ".",
+  "OPERATOR": [
+    "100001381266797"
+  ],
+  "ADMINBOT": [
+    "100001381266797",
+    ""
+  ],
+  "OWNER": ["100001381266797"], 
+  "APPROVED": [],
+  "disabledcmds": [],
+  "disabledevents": [],
+  "note": "make sure that the bot name you entered is all lowercase",
+  "notice": "dont cng author name and owner uid. otherwise bot not working",
+  "notice2": "if you run use email and password, use saveState false; otherwise, use saveState true"
+}

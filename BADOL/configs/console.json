@@ -1,0 +1,29 @@
+{
+  "note": "config the console output and loaders here!",
+  "console": {
+    "success": "blueBright",
+    "error": "red",
+    "warn": "yellow",
+    "available": "blue, red, yellow, white, green, blueBright",
+    "editNames": {
+      "success": "BADOL RUNNING",
+      "error":   "BADOL ERROR",
+      "warn":    "BADOL WARNING"
+    }
+  },
+  "logger": {
+    "colors": {
+      "cmdStarter": "blueBright",
+      "evntStarter": "blue",
+      "cmdLoader": "blueBright",
+      "evntLoader": "blue"
+    },
+    "strings": {
+      "cmdStarter": "BADOL INPORTING COMMANDS",
+      "evntStarter": "BADOL INPORTING EVENTS",
+      "cmdLoader": "BADOL COMMAND",
+      "evntLoader": "BADOL EVENT"
+    }
+  }
+}
+ 
