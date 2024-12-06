@@ -1,54 +1,67 @@
+const axios = require("axios");
+const FormData = require('form-data');
+
 module.exports.config = {
-  name: "imgur",
-  version: "1.0.0",
-  permission: 0,
-  credits: "MOHAMMAD-BADOL", //**your needed my cmd but don't change My credit & share this cmd***and original author fb I'd : https://m.me/MBC.K1NG.007 **//
-  description: "",
-  prefix: true,
-  category: "user",
-  usages: "Link",
+  name: 'imgur',
+  version: '1.1.0',
+  permssion: 0,
+  credits: 'MOHAMMAD-BADOL', //**your needed my cmd but don't change My credit & share this cmd***and original author fb I'd : https://m.me/MBC.K1NG.007 **//
+  prefix:true,
+  description: 'Converts text into any Font',
+  category: 'Tools',
+  usages: '<fontType> <input>',
   cooldowns: 5,
-  dependencies: {
-    "axios": "",
-    "imgur-upload-api": ""
-  }
 };
 
-module.exports.run = async ({ api, event, args }) => {
-  const axios = global.nodemodule['axios'];
-  const { imgur } = require("imgur-upload-api");
+module.exports.run = async function ({ api, event }) {
+  async function uploadToImgur(attachmentBuffer) {
+    try {
+      const formData = new FormData();
+      formData.append('image', attachmentBuffer, 'image.jpg');
 
+      console.log('Uploading to Imgur...');
+      const uploadResponse = await axios.post('https://api.imgur.com/3/upload', formData, {
+        headers: {
+          ...formData.getHeaders(),
+          Authorization: `Client-ID c76eb7edd1459f3`
+        }
+      });
 
-  let linkanh = event.messageReply?.attachments[0]?.url || args.join(" ");
+      console.log('Upload response:', uploadResponse.data);
+      const imgurLink = uploadResponse.data.data.link;
 
-  if (!linkanh) {
-    return api.sendMessage('[⚜️]➜ Please provide an image or video link.', event.threadID, event.messageID);
+      if (!imgurLink) {
+        throw new Error('Failed to get Imgur link');
+      }
+      return imgurLink;
+
+    } catch (error) {
+      console.error('Imgur upload error:', error.response?.data || error.message);
+      throw new Error('An error occurred while uploading to Imgur.');
+    }
   }
 
   try {
-    
-    linkanh = linkanh.replace(/\s/g, '');
-
-    
-    if (!/^https?:\/\//.test(linkanh)) {
-      return api.sendMessage('[⚜️]➜ Invalid URL: URL must start with http:// or https://', event.threadID, event.messageID);
+    const attachmentLink = event.messageReply?.attachments[0]?.url;
+    if (!attachmentLink) {
+      return api.sendMessage(
+        "Please reply to an image or video.",
+        event.threadID,
+        event.messageID
+      );
     }
 
-    
-    const encodedUrl = encodeURI(linkanh);
+    const attachmentResponse = await axios.get(attachmentLink, { responseType: 'arraybuffer' });
+    const attachmentBuffer = attachmentResponse.data;
+    const imgurLink = await uploadToImgur(attachmentBuffer);
 
-    const attachments = event.messageReply?.attachments || [];
-    const allPromises = attachments.map(item => {
-      const encodedItemUrl = encodeURI(item.url);
-      return imgur(encodedItemUrl);
-    });
-
-    const results = await Promise.all(allPromises);
-    const imgurLinks = results.map(result => result.data.link); 
-
-    return api.sendMessage(`Uploaded Imgur Links:\n${imgurLinks.join('\n')}`, event.threadID, event.messageID);
-  } catch (e) {
-    console.error(e);
-    return api.sendMessage('[⚜️]➜ An error occurred while uploading the image or video.', event.threadID, event.messageID);
+    api.sendMessage(imgurLink, event.threadID, event.messageID);
+  } catch (error) {
+    console.error(error);
+    return api.sendMessage(
+      "Failed to convert image or video into link.",
+      event.threadID,
+      event.messageID
+    );
   }
 };
