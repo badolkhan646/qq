@@ -25,9 +25,9 @@ module.exports.handleEvent = async ({ api, event }) => {
      let d1PInfo = await api.getThreadInfo(event.threadID);
   let diptoName = d1PInfo.threadName;
     var time = moment.tz("Asia/Dhaka").format("LLLL");
-  const text = `╔══≪❈𝐏𝐫𝐞𝐟𝐢𝐱 𝐄𝐯𝐞𝐧𝐭❈≫══╗\n║𝐑𝐎𝐁𝐎𝐓 𝐏𝐑𝐄𝐅𝐈𝐗 ➠ ｢ ${global.config.PREFIX} ｣  ║\n║𝐑𝐎𝐁𝐎𝐓 𝐂𝐌𝐃➢ ｢ ${client.commands.size} ｣   ║\n╚══≪❈ 𝐁𝟒𝐃𝟗𝐋-𝐁𝟗𝐓 ❈≫══╝\n𝐂𝐫𝐞𝐚𝐭𝐨𝐫\n➥𝐁𝟒𝐃𝟗𝐋`
+  const text = `╔══≪❈𝐏𝐫𝐞𝐟𝐢𝐱 𝐄𝐯𝐞𝐧𝐭❈≫══╗\n║𝐑𝐎𝐁𝐎𝐓 𝐏𝐑𝐄𝐅𝐈𝐗 ➠ 【 ${global.config.PREFIX} 】  ║\n║𝐑𝐎𝐁𝐎𝐓 𝐂𝐌𝐃➢ ｢ ${client.commands.size} ｣   ║\n╚══≪❈𝐌𝟏𝐌-𝐁𝟗𝐓-𝟎𝟎𝟕❈≫══╝\n𝐂𝐫𝐞𝐚𝐭𝐨𝐫\n➥𝐌𝐨𝐡𝐚𝐦𝐦𝐚𝐝-𝐁𝐚𝐝𝐨𝐥`
   //const text2 = text[Math.floor(Math.random() * text.length)];
-const imgur = ["https://i.imgur.com/REQoisC.png"]
+const imgur = ["https://i.imgur.com/lb2Ug57.jpeg"]
   const link = imgur[Math.floor(Math.random() * imgur.length)];
   const res = await dipto.get(link, { responseType: 'arraybuffer' })
 const ex = path.extname(link);
