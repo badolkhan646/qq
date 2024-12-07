@@ -17,7 +17,7 @@ module.exports.config = {
     }
 };
 
-const userListPath = path.join(__dirname, "Nayan/userList.json");
+const userListPath = path.join(__dirname, "BADOL/userList.json");
 const remoteURL = "http://5.78.114.238:5069/alif/badwords";
 
 async function fetchReplies() {
