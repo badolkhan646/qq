@@ -25,7 +25,7 @@ module.exports.run = async function({ api, event, args, Users }) {
   try {
   const apis = await axios.get('https://raw.githubusercontent.com/MOHAMMAD-NAYAN/Nayan/main/api.json')
 const n = apis.data.api
-    const response = await axios.get(`${n}/sim?ask=${encodeURIComponent(prompt)}`);
+    const response = await axios.get(`${n}/sim?type=ask&ask=${encodeURIComponent(prompt)}`);
     const result = response.data.data.msg;
 
     return api.sendMessage(result, event.threadID, event.messageID);
