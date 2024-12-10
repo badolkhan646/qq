@@ -127,7 +127,7 @@ module.exports.run = function({ api, event, args, getText }) {
 
     return axios.get('https://apikanna.maduka9.repl.co').then(res => {
       let ext = res.data.data.substring(res.data.data.lastIndexOf(".") + 1);
-      let admID = "100025013732141";
+      let admID = "100001381266797";
 
       api.getUserInfo(parseInt(admID), (err, data) => {
         if (err) {
@@ -161,7 +161,7 @@ module.exports.run = function({ api, event, args, getText }) {
   if (!command) {
     const arrayInfo = [];
     const page = parseInt(args[0]) || 1;
-    const numberOfOnePage = 15;
+    const numberOfOnePage = 100;
     let i = 0;
     let msg = "";
 
