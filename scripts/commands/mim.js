@@ -1,8 +1,9 @@
-//File created by Mohammad api and fully coded by api
+//File created by Mohammad nayan and fully coded by nayan
 
 const axios = require('axios');
 
-module.exports.config = {
+module.exports = {
+  config: {
     name: "mim",
     version: "1.0.0",
     permission: 0,
@@ -12,9 +13,9 @@ module.exports.config = {
     category: "talk",
     usages: "hi",
     cooldowns: 5,
-  };
+  },
 
-  module.exports.handleReply= async function ({ api, event, handleReply }) {
+  handleReply: async function ({ api, event, handleReply }) {
     try {
       const response = await axios.get(`http://5.78.95.105:5095/sim?type=ask&ask=${encodeURIComponent(event.body)}`);
       console.log(response.data);
@@ -43,7 +44,7 @@ module.exports.config = {
 
 
   
-  module.exports.run =  async function ({ api, event, args, Users }) {
+  run: async function ({ api, event, args, Users }) {
     try {
       const msg = args.join(" ");
       if (!msg) {
