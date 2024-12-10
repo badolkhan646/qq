@@ -1,18 +1,17 @@
 const axios = require('axios');
 
 module.exports = {
-  config: {
-    name: "bot",
-    version: "1.0.0",
-    permission: 0,
-    credits: "MOHAMMAD-BADOL",//**your needed my cmd but don't change My credit & share this cmd***and original author fb I'd : https://m.me/MBC.K1NG.007 **//
-    description: "bot-hi-hlw",
-    usePrefix: true,
-    prefix: auto,
-    category: "talk",
-    usages: "hi",
-    cooldowns: 5,
-  },
+    config: {
+      name: "bot",
+      version: "1.0.0",
+      permission: 0,
+      credits: "MOHAMMAD-BADOL",//**your needed my cmd but don't change My credit & share this cmd***and original author fb I'd : https://m.me/MBC.K1NG.007 **//
+      description: "bot-hi-hlw",
+      prefix: false,
+      category: "talk",
+      usages: "hi",
+      cooldowns: 5,
+    },
 
   handleReply: async function ({ api, event, handleReply }) {
     try {
