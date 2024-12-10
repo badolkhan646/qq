@@ -8,7 +8,7 @@ module.exports.config = {
     permission: 0,
     credits: "api",
     description: "...",
-    prefix: 'awto',
+    prefix: true,
     category: "talk",
     usages: "hi",
     cooldowns: 5,
